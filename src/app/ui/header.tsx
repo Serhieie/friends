@@ -23,6 +23,7 @@ export const Header: React.FC = () => {
   const displayStyles = "  ";
 
   const pathname = usePathname();
+  console.log(pathname);
 
   return (
     <header
