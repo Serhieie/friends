@@ -31,7 +31,7 @@ export const ChatApp: React.FC = () => {
     return () => {
       socket.off("chat-message");
     };
-  }, []);
+  }, [socket]);
 
   const sendMessage = (message: Message) => {
     socket.emit("chat-message", message);
@@ -55,7 +55,7 @@ export const ChatApp: React.FC = () => {
   const allMessages = [...historyMessages, ...messages.slice().reverse()];
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="w-full  relative overflow-y-scroll scrl  ">
+      <div className="w-full h-[80%] relative overflow-y-scroll scrl  ">
         <Chat data={allMessages} />
       </div>
       <ChatForm onSubmit={sendMessage} />
