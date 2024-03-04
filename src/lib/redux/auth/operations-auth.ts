@@ -20,7 +20,7 @@ import {
 } from "../../../helpers/notiflix";
 
 // const BASE_URL = "http://localhost:3000/api/";
-const BASE_URL = "https://crypto-helper.onrender.com/api/";
+const BASE_URL = "https://friends-back.onrender.com/api/";
 axios.defaults.baseURL = BASE_URL;
 export const token = {
   set(token: string) {

@@ -12,7 +12,7 @@ export const ChatApp: React.FC = () => {
   const [historyMessages, setHistoryMessages] = useState<Message[]>([]);
   const { user } = useAuth();
 
-  const socket = io("https://crypto-helper.onrender.com", {
+  const socket = io("https://friends-back.onrender.com", {
     query: {
       userId: user.id,
     },
