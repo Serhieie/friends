@@ -40,13 +40,13 @@ export const ChatApp: React.FC = () => {
   if (isLoading)
     return (
       <div className="flex flex-col w-full h-full">
-        <div className="w-full  relative overflow-y-scroll scrl  h-[88%]">
+        <div className="w-full  relative overflow-y-scroll scrl h-[80%]  md:h-[88%]">
           <ChatSkelleton />
         </div>
         <div
           className="rounded-xl text-darkYellow placeholder:text-darkYellow 
   placeholder:opacity-50 w-full px-4 py-4 outline-none 
-  bg-lightYellow overflow-auto resize-none h-[12%] opacity-40"
+  bg-lightYellow overflow-auto resize-none h-[20%] md:h-[12%] opacity-40"
         ></div>
       </div>
     );
@@ -55,7 +55,7 @@ export const ChatApp: React.FC = () => {
   const allMessages = [...historyMessages, ...messages.slice().reverse()];
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="w-full h-[80%] relative overflow-y-scroll scrl  ">
+      <div className="w-full md:h-[88%] h-[80%] relative overflow-y-scroll scrl  ">
         <Chat data={allMessages} />
       </div>
       <ChatForm onSubmit={sendMessage} />

@@ -22,7 +22,7 @@ export default function Home() {
     <div className="flex flex-col p-6 md:p-4 ssm:p-2  pt-0">
       <div
         className="mt-4 md:mt-0 flex grow flex-col gap-4 md:flex-row h-[calc(100vh-120px)]
-     md:h-[calc(100vh-88px)] "
+     md:h-[calc(100vh-108px)] "
       >
         <div
           className="flex md:flex-col  flex-row-reverse justify-around

@@ -44,7 +44,7 @@ export const Login: React.FC = () => {
     <div
       className="grid  grid-cols-12 grid-rows-10
     w-full justify-items-center items-center mt-4 px-6 md:px-4 md:mt-2 gap-2 md:gap-1 h-[calc(100vh-118px)]
-     md:h-[calc(100vh-74px)]  "
+     md:h-[calc(100vh-100px)] "
     >
       <div
         className="col-start-1 col-end-1 row-start-1 

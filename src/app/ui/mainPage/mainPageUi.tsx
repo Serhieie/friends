@@ -26,7 +26,7 @@ export const MainPageUi: React.FC = () => {
     if (!token && !isRefreshing && !isLoggedIn) {
       redirect("/login");
     }
-  }, [token, isRefreshing, user, localAvatar]);
+  }, [token, isRefreshing, user, localAvatar, isLoggedIn]);
 
   const handleAvatarClick = (event: MouseEvent<HTMLImageElement>) => {
     const element = event.target as HTMLImageElement;
@@ -48,7 +48,7 @@ export const MainPageUi: React.FC = () => {
         className="grid  grid-cols-12 grid-rows-10
     w-full justify-items-center items-center mt-2 px-6 
     md:px-4 ssm2:px-1  gap-2 md:gap-1 h-[calc(100vh-120px)]
-    ssm2:h-[calc(100vh-16px)] md:h-[calc(100vh-88px)] md:mt-1"
+     md:h-[calc(100vh-90px)] md:mt-1"
       >
         <div
           className="col-start-1 relative col-end-13 row-start-1 

@@ -47,7 +47,7 @@ export const ChatForm: React.FC<ChatForm> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex h-[20%] relative ">
+    <form onSubmit={handleSubmit} className="flex h-[20%] md:h-[12%] relative ">
       <label htmlFor="name" className="flex gap-1 w-full">
         <textarea
           className="rounded-xl text-darkYellow placeholder:text-darkYellow 
