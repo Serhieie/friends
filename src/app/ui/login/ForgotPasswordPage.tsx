@@ -1,13 +1,17 @@
 import { useAuth } from "../../../helpers/hooks/authSelector";
 import { useState } from "react";
-import { setIsChangePasswordModalOpen, setResended } from "@/lib/redux/auth/slice-auth";
+import {
+  setChangingPass,
+  setIsChangePasswordModalOpen,
+  setResended,
+} from "@/lib/redux/auth/slice-auth";
 import { useDispatch } from "react-redux";
 import { changePasswordRequest } from "@/lib/redux/auth/operations-auth";
 import { alfaSlab } from "../fonts";
 
 export const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, user, resended, isChangePasswordModalOpen } = useAuth();
+  const { isRefreshing, user, resended, changingPass } = useAuth();
   const [timeRemaining, setTimeRemaining] = useState(30);
   const [email, setEmail] = useState<string>("");
 
@@ -23,6 +27,7 @@ export const ForgotPasswordPage = () => {
 
   const handleChangePassword = () => {
     if (!email) return;
+    dispatch(setChangingPass(true));
     dispatch(setResended(true));
     dispatch(changePasswordRequest({ email }) as any);
 
@@ -37,7 +42,7 @@ export const ForgotPasswordPage = () => {
         }
       });
     }, 1000);
-    console.log(timeRemaining);
+    console.log(changingPass);
   };
 
   if (timeRemaining < 30) {

@@ -1,17 +1,18 @@
 "use client";
-import { Login } from "../../ui/login/Login";
+
 import { useAuth } from "@/helpers/hooks/authSelector";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
-import { ChangePasswordPage } from "../../ui/changePassword/ChangePassword";
+import { ChangePasswordPage } from "../ui/changePassword/ChangePassword";
 
 export default function LoginPage() {
-  const { isLoggedIn, changingPass } = useAuth();
+  const { changingPass, isRefreshing } = useAuth();
+
   useEffect(() => {
-    if (!changingPass && !isLoggedIn) {
+    if (!changingPass && !isRefreshing) {
       redirect("/login");
     }
-  }, [changingPass, isLoggedIn]);
+  }, [changingPass, isRefreshing]);
 
   return <ChangePasswordPage />;
 }

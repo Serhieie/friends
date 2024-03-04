@@ -3,13 +3,14 @@ import { changePasswordSchema } from "../../../helpers/schema";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import { changePassword } from "@/lib/redux/auth/operations-auth";
-import { registrationFormStyles } from "../registration/Registration.styles";
 import { inputsStyles } from "../registration/Registration.styles";
 import { alfaSlab } from "../fonts";
 import { usePathname } from "next/navigation";
 import { useAuth } from "../../../helpers/hooks/authSelector";
 import { initialValuesTypes } from "../registration/Registration.types";
 import { LoginFormButton } from "../login/LoginFormButton";
+import { setChangingPass } from "@/lib/redux/auth/slice-auth";
+import { redirect } from "next/navigation";
 
 const initialValues: initialValuesTypes = {
   name: "",
@@ -37,6 +38,7 @@ export const ChangePasswordPage: React.FC = () => {
       changePasswordCode,
     };
     dispatch(changePassword(newPassword) as any);
+    dispatch(setChangingPass(false));
     resetForm();
   };
 
@@ -58,40 +60,38 @@ export const ChangePasswordPage: React.FC = () => {
         className="col-start-3 col-end-3 row-start-1 
       row-end-11 bg-mediumDarkBlue w-full h-full rounded-xl md:hidden"
       ></div>
-      {changingPass ? (
-        <Formik
-          initialValues={initialValues}
-          validationSchema={changePasswordSchema}
-          onSubmit={handleSubmit}
-          validateOnChange={false}
-          validateOnBlur={false}
-        >
-          <Form
-            autoComplete="off"
-            className="row-span-10 col-start-4 col-end-10 md:col-start-3 
+      <Formik
+        initialValues={initialValues}
+        validationSchema={changePasswordSchema}
+        onSubmit={handleSubmit}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        <Form
+          autoComplete="off"
+          className="row-span-10 col-start-4 col-end-10 md:col-start-3 
               md:col-end-11 ssm:col-start-2 ssm:col-end-12 col-span-6
            flex gap-2 flex-col   pt-20  px-10 md:px-3 rounded-xl
           shadow-lg bg-mainYellow   md2:pt-8  md:pb-14  
           transition-all  z-20 w-full  h-full"
+        >
+          <h1
+            className={`  ${alfaSlab.className} text-3xl text-center  mb-6 mt-8 text-darkYellow font-montserrat `}
           >
-            <h1
-              className={`  ${alfaSlab.className} text-3xl text-center  mb-6 mt-8 text-darkYellow font-montserrat `}
-            >
-              Change your password
-            </h1>{" "}
-            <PasswordAndConfirm
-              withInputClass={withInputClass}
-              fieldsStyle={fieldsStyle}
-              labelText={"New password"}
-            />
-            <LoginFormButton
-              isLoading={isRefreshing}
-              text="Change Password"
-              styles=" py-6 mt-4"
-            />
-          </Form>
-        </Formik>
-      ) : null}
+            Change your password
+          </h1>{" "}
+          <PasswordAndConfirm
+            withInputClass={withInputClass}
+            fieldsStyle={fieldsStyle}
+            labelText={"New password"}
+          />
+          <LoginFormButton
+            isLoading={isRefreshing}
+            text="Change Password"
+            styles=" py-6 mt-4"
+          />
+        </Form>
+      </Formik>
 
       <div
         className="col-start-10 col-end-10 row-start-1 

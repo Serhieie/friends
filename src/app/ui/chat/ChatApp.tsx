@@ -12,17 +12,17 @@ export const ChatApp: React.FC = () => {
   const [historyMessages, setHistoryMessages] = useState<Message[]>([]);
   const { user } = useAuth();
 
-  const socket = io("https://friends-back.onrender.com", {
-    query: {
-      userId: user.id,
-    },
-  });
-
-  // const socket = io("http://localhost:3000", {
+  // const socket = io("https://friends-back.onrender.com", {
   //   query: {
   //     userId: user.id,
   //   },
   // });
+
+  const socket = io("http://localhost:3000", {
+    query: {
+      userId: user.id,
+    },
+  });
 
   useEffect(() => {
     socket.on("chat-message", (message: Message) => {

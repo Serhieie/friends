@@ -10,7 +10,7 @@ export const UsersList: React.FC = () => {
 
   useEffect(() => {
     refetch();
-  }, [avatarURL]);
+  }, [refetch, avatarURL]);
 
   if (isLoading) {
     return <UsersListSkelleton />;

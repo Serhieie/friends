@@ -7,23 +7,15 @@ import { useEffect } from "react";
 import { fetchCurrentUser } from "@/lib/redux/auth/operations-auth";
 import { useDispatch } from "react-redux";
 import { NavButtons } from "./navBtns";
-import { useAuth } from "@/helpers/hooks/authSelector";
-
-import { usePathname } from "next/navigation";
 
 export const Header: React.FC = () => {
-  const { isRefreshing } = useAuth();
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchCurrentUser() as any);
   }, [dispatch]);
 
   const ButtonsStyles = "hover:bg-mediumDarkRed bg-mainRed text-lightYellow ";
   const displayStyles = "  ";
-
-  const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <header

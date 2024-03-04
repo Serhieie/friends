@@ -6,10 +6,8 @@ import { righteous } from "./ui/fonts";
 import { useAuth } from "@/helpers/hooks/authSelector";
 import { useEffect } from "react";
 import { redirect } from "next/navigation";
-import { useDispatch } from "react-redux";
 
 export default function Home() {
-  const dispatch = useDispatch();
   const { token, isLoggedIn } = useAuth();
 
   useEffect(() => {
